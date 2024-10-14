@@ -19,11 +19,18 @@ def is_valid_email(email):
     return re.match(pattern, email) is not None
 
 def generate_greeting(nom_responsable, sexe_responsable, nom_entreprise):
-    if nom_responsable and sexe_responsable and sexe_responsable != "NA":
+    if nom_responsable and sexe_responsable and sexe_responsable != "NA" and nom_entreprise:
         if sexe_responsable == 'F':
-            return f"Chère {nom_responsable}, responsable de {nom_entreprise}"
+            return f"Chère {nom_responsable} responsable de {nom_entreprise}"
         elif sexe_responsable == 'M':
-            return f"Cher {nom_responsable}, responsable de {nom_entreprise}"
+            return f"Cher {nom_responsable} responsable de {nom_entreprise}"
+    elif nom_responsable and sexe_responsable and sexe_responsable != "NA" and not nom_entreprise:
+        if sexe_responsable == 'F':
+            return f"Chère {nom_responsable}"
+        elif sexe_responsable == 'M':
+            return f"Cher {nom_responsable}"
+    elif not nom_responsable and not nom_entreprise:
+         return f"Cher(e) responsable" 
     return f"Cher(e) responsable de {nom_entreprise}"
 
 def send_email(to_email, subject, html_content):
