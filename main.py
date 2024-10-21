@@ -35,7 +35,7 @@ def generate_greeting(nom_responsable, sexe_responsable, nom_entreprise):
 
 def send_email(to_email, subject, html_content):
     message = Mail(
-        from_email='info@iwalink.ch',
+        from_email='contact@iwalink.ch',
         to_emails=to_email,
         subject=subject,
         html_content=html_content)
